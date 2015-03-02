@@ -24,13 +24,17 @@
     author@esilgard
     last updated October 2014
 '''
-args=dict((x.split('=')[0],x.split('=')[1].strip()) for x in open('args.txt','r').readlines())
+import os
+path= os.path.dirname(os.path.realpath(__file__))+'/'
+args=dict((x.split('=')[0],x.split('=')[1].strip()) for x in open(path+'args','r').readlines())
 
-from Tests import test1,test2,test3,test4,test5,test6
+print args
+from Tests import test1,test2,test3,test4,test5,test6,test7
 
-print ',\t'.join(test1.get(args[argos_nlp_engine_path]))
-print ',\t'.join(test2.get(args[input_file_name]))
-print ',\t'.join(test3.get(args[output_file]))
-print ',\t'.join(test4.get(args[input_file_name]))
-print ',\t'.join(test5.get(args[output_file]))
-print ',\t'.join(test6.get(args[output_file]))
+print ',\t'.join(test1.get(args['argos_nlp_engine_path']))
+print ',\t'.join(test2.get(args['input_file_name']))
+print ',\t'.join(test3.get(args['json_output_file']))
+print ',\t'.join(test4.get(args['input_file_name']))
+print ',\t'.join(test5.get(args['json_output_file']))
+print ',\t'.join(test6.get(args['json_output_file']))
+print ',\t'.join(test7.get(args['json_output_file']))
