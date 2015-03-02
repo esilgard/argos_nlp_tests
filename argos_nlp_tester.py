@@ -24,16 +24,13 @@
     author@esilgard
     last updated October 2014
 '''
-
-argos_nlp_engine_path='C:/users/esilgard/Documents/NLPStaples/Repositories/labkey_dev/argos_nlp/nlp_engine.py'
-input_file_name='C:/users/esilgard/Documents/NLPStaples/Repositories/Data/lung_training_path_data.nlp.txt'
-output_file='C:\Users\esilgard\Documents\NLPStaples\Repositories\json_output.txt'
+args=dict((x.split('=')[0],x.split('=')[1].strip()) for x in open('args.txt','r').readlines())
 
 from Tests import test1,test2,test3,test4,test5,test6
 
-print ',\t'.join(test1.get(argos_nlp_engine_path))
-print ',\t'.join(test2.get(input_file_name))
-print ',\t'.join(test3.get(output_file))
-print ',\t'.join(test4.get(input_file_name))
-print ',\t'.join(test5.get(output_file))
-print ',\t'.join(test6.get(output_file))
+print ',\t'.join(test1.get(args[argos_nlp_engine_path]))
+print ',\t'.join(test2.get(args[input_file_name]))
+print ',\t'.join(test3.get(args[output_file]))
+print ',\t'.join(test4.get(args[input_file_name]))
+print ',\t'.join(test5.get(args[output_file]))
+print ',\t'.join(test6.get(args[output_file]))
