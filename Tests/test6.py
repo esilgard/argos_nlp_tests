@@ -23,7 +23,7 @@ def get(json_file_name):
         
         if ('controlInfo' in data and 'reports' in data and 'errors' in data) and\
           ( type(data['controlInfo'])==dict and type(data['reports'])==list and type(data['errors'])==list) and \
-          len(data['reports'])>0 and len(data['controlInfo'])==9:   
+          len(data['reports'])>0:   
            
             return test_num,'Pass',test_desc
         else:
