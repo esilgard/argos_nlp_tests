@@ -24,16 +24,26 @@
     author@esilgard
     
 '''
-import os
+import os,sys
 path= os.path.dirname(os.path.realpath(__file__))+'/'
-args=dict((x.split('=')[0],x.split('=')[1].strip()) for x in open(path+'args.txt','r').readlines())
 
-print args
+try:
+    args=dict((x.split('=')[0],x.split('=')[1].strip()) for x in open(path+'args.txt','r').readlines())
+    print 'file arguments for testing:'
+    for k,v in args.items():
+        print k,v
+    print ''
+except:
+    print 'FATAL ERROR, args.txt does not exist in the argos_nlp_tester directory or is not formatted correctly, refer to the README file for more info'
+    sys.exit(1)
+
+
 from Tests import test1,test2,test3,test4,test5,test6,test7
 
-print ',\t'.join(test1.get(args['argos_nlp_engine_path']))
+print ',\t'.join(test1.get(args['engine_path']+'nlp_engine.py'))
 print ',\t'.join(test2.get(args['input_file_name']))
 print ',\t'.join(test3.get(args['json_output_file']))
 print ',\t'.join(test4.get(args['input_file_name']))
 print ',\t'.join(test5.get(args['json_output_file']))
 print ',\t'.join(test6.get(args['json_output_file']))
+print ',\t'.join(test7.get(args['engine_path']+'metadata.json'))
