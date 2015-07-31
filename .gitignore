@@ -55,3 +55,6 @@ target/
 
 # text file with arguments; paths to input files
 args.txt
+
+#back-up files
+*.*~
