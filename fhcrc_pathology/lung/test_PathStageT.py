@@ -81,11 +81,20 @@ class PathStageTHappyCase(unittest.TestCase):
         disease_group='Cooties'
         dictionary=self.make_default_dictionary()
         expected_dictionary = []
-        mock_match.assert_called_with(self.path_stage_t.regex, self.path_stage_t.full_text, re.DOTALL)
         mock_match.return_value = None
+        
         return_dictionary = self.path_stage_t.get(disease_group, dictionary)
+      
+        
+        self.assertEqual(self.path_stage_t.return_dictionary[dict_keys.NAME],EXPECTED_STAGE_NAME)
+        self.assertEqual(self.path_stage_t.return_dictionary[dict_keys.CONFIDENCE], 0.0)
+        self.assertEqual(self.path_stage_t.return_dictionary[dict_keys.VERSION], EXPECTED_VERSION)
+        self.assertEqual(self.path_stage_t.return_dictionary[dict_keys.TABLE], dict_keys.STAGE_GRADE_TABLE)
+        
+        mock_match.assert_called_with(self.path_stage_t.regex, FULL_TEXT, re.DOTALL)
 
-        self.assertEqual(self.path_stage_t.return_dictionary, {}) #return_dictionary is not set when no stage is returned
+        self.assertEqual(self.path_stage_t.return_dictionary[dict_keys.VALUE], None)
+        self.assertEqual(self.path_stage_t.return_dictionary[dict_keys.STARTSTOPS], []) 
 
 if __name__ == '__main__':
     unittest.main()
